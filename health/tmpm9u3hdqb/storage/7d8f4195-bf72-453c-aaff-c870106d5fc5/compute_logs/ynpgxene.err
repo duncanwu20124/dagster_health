@@ -1,0 +1,20 @@
+[32m2023-10-23 09:20:02 +0000[0m - dagster - [34mDEBUG[0m - test_job - 7d8f4195-bf72-453c-aaff-c870106d5fc5 - 579738 - LOGS_CAPTURED - Started capturing logs in process (pid: 579738).
+[32m2023-10-23 09:20:02 +0000[0m - dagster - [34mDEBUG[0m - test_job - 7d8f4195-bf72-453c-aaff-c870106d5fc5 - 579738 - health_emotion - STEP_START - Started execution of step "health_emotion".
+[32m2023-10-23 09:20:02 +0000[0m - dagster - [34mERROR[0m - [31mtest_job - 7d8f4195-bf72-453c-aaff-c870106d5fc5 - 579738 - health_emotion - STEP_FAILURE - Execution of step "health_emotion" failed.
+
+dagster._core.errors.DagsterExecutionStepExecutionError: Error occurred while executing op "health_emotion"::
+
+KeyError: 'rows'
+
+Stack Trace:
+  File "/home/duncan/.local/lib/python3.8/site-packages/dagster/_core/execution/plan/utils.py", line 54, in op_execution_error_boundary
+    yield
+  File "/home/duncan/.local/lib/python3.8/site-packages/dagster/_utils/__init__.py", line 445, in iterate_with_context
+    next_output = next(iterator)
+  File "/home/duncan/.local/lib/python3.8/site-packages/dagster/_core/execution/plan/compute_generator.py", line 124, in _coerce_op_compute_fn_to_iterator
+    result = invoke_compute_fn(
+  File "/home/duncan/.local/lib/python3.8/site-packages/dagster/_core/execution/plan/compute_generator.py", line 118, in invoke_compute_fn
+    return fn(context, **args_to_pass) if context_arg_provided else fn(**args_to_pass)
+  File "/home/duncan/dagster_health/health/health/assets.py", line 19, in health_emotion
+    rows =item["rows"]
+[0m
